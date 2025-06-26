@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accessing Secure Server...</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 20px;
+      font-size: 16px;
+    }
+    #terminal {
+      white-space: pre-wrap;
+    }
+    .prank {
+      display: none;
+      color: red;
+      font-size: 24px;
+      text-align: center;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <div class="prank" id="prank-message">
+    <p>💀 تم اختراقك بنجاح الأردن! 🇯🇴</p>
+    <p>من السعودية مع كل الحب 😂🇸🇦</p>
+  </div>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+    const prank = document.getElementById("prank-message");
+
+    // مؤثرات صوتية
+    const sound = new Audio('https://www.soundjay.com/button/beep-07.wav'); // صوت فزع بسيط
+    const sound2 = new Audio('https://www.soundjay.com/button/beep-08.wav'); // صوت "اختراق"
+    const sound3 = new Audio('https://www.soundjay.com/button/beep-09.wav'); // صوت النهاية (قنبلة) 🎇
+
+    // اهتزاز الجهاز
+    function vibrateDevice() {
+      if (navigator.vibrate) {
+        navigator.vibrate([200, 100, 200]); // يهتز 200ms، ثم يهدأ، ثم يهتز ثانية
+      }
+    }
+
+    const lines = [
+      "[+] Connecting to NSA Server...",
+      "[+] Bypassing Jordanian Firewall...",
+      "[+] Exploiting Port 1337...",
+      "[+] Uploading payload...",
+      "[!] Access granted to Device: H4CK3R-JO",
+      "[*] Injecting surprise script...",
+      "[*] Hiding traces...",
+      "[*] Upload complete.",
+      "[*] Finalizing...",
+      "[!] BOOM!"
+    ];
+
+    let index = 0;
+
+    function showLine() {
+      if (index < lines.length) {
+        terminal.innerHTML += lines[index] + "\n";
+        index++;
+
+        // تشغيل الصوت لكل خطوة
+        if (index == 1 || index == 3 || index == 6) {
+          sound.play();  // بيب الصوت!
+        }
+        if (index == 4) {
+          sound2.play();  // اختراق!
+        }
+        if (index == 8) {
+          sound3.play();  // النهاية
+        }
+
+        setTimeout(showLine, 800);
+      } else {
+        document.body.style.backgroundColor = "red";
+        terminal.style.display = "none";
+        prank.style.display = "block";
+        vibrateDevice();  // اهتزاز الجهاز
+      }
+    }
+
+    showLine();
+  </script>
+</body>
+</html>
